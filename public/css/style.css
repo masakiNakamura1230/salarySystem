@@ -1,0 +1,731 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Shippori+Mincho:wght@600;700;800&display=swap');
+/* reset */
+body, h1, h2, h3, h4, h5, h6, p, address,
+ul, ol, li, dl, dt, dd, img, form, table, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 100%;
+	text-align: left;
+	list-style-type: none;
+	border-collapse: collapse;
+}
+
+textarea { font-size: 100%; vertical-align:middle;}
+img { border-style: none; display: block; }
+hr { display: none; }
+em{font-style: normal}
+input{line-height:auto;vertical-align:middle;}
+strong.more{color:#c30}
+a{text-decoration: none;}
+
+body {
+	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro',sans-serif;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+/* 共通----------------------------------------------- */
+body {
+  height: 100%;
+  padding: 70px 100px ;
+  text-align: center;
+  background-color:#adefff21;
+}
+
+main {
+  margin: 80px 0;
+}
+
+/* テーブル */
+table {
+  margin: 0 auto;
+}
+
+tr {
+  height: 70px;
+}
+
+td {
+  height: 50px;
+  font-size: 24px;
+} 
+
+.tableContent {
+  width: 200px;
+}
+
+.tableInput {
+  width: 320px;
+}
+
+.textInput {
+  width: 100%;
+  height: 60%;
+}
+
+/* エラーメッセージ */
+.errorMsg {
+  font-size: 12px;
+  color: red;
+}
+
+.centerErrorMsg{
+  display: block;
+  text-align: center;
+}
+
+/* ボタン */
+.btn {
+  display: block;
+  margin: 80px auto 0;
+  width: 150px;
+  height: 50px;
+  box-shadow: 3px 3px 3px gray;
+  cursor: pointer;
+  border: none;
+  background-color: #6e7af033;
+}
+
+.btn:hover {
+  background: #4756dc33;
+}
+
+/* ログアウトボタン */
+#logOutWrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#logOutBox {
+  display: flex;
+  flex-direction: column;
+}
+
+#logOut {
+  width: 120px;
+  padding: 5px 0;
+  font-size: 12px;
+  border: 1px solid #aaa;
+  border-radius: 20px;
+  color: #666;
+  background-color: #e5f2ff;
+}
+
+/* 画面タイトル */
+.pageTitle {
+	position: relative;
+  display: inline-block;
+	padding-top: 50px;
+	padding-left: 30px;
+	font-size: 60px;
+  color: #52c3ff;
+}
+
+.pageTitle span {
+	position: relative;
+	z-index: 2;
+  font-family: 'Shippori Mincho', serif;
+}
+
+.pageTitle::before {
+	content: attr(data-en);
+	position: absolute;
+	transform: rotate(-5deg);
+	top: -2px;
+	left: 0;
+	color: #6e7af033;
+	font-weight: 400;
+	font-family: luxus-brut, cursive;
+	font-style: italic;
+}
+
+/* 入力フォーム */
+.playTextboxWrap {
+  position: relative;
+  width: 500px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.playLabelUserId,
+.playLabelPassword,
+.playLabelUserName,
+.playLabelQuestion,
+.playLabelWork,
+.playLabelSalary,
+.playLabelPasswordRe {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  font-size: 16px;
+  color: #a0a0a0;
+  transition: all 0.25s ease;
+}
+
+.playLabelUserId.focus,
+.playLabelPassword.focus,
+.playLabelUserName.focus,
+.playLabelQuestion.focus,
+.playLabelWork.focus,
+.playLabelSalary.focus,
+.playLabelPasswordRe.focus {
+    top: -25px;
+    left: 5px;
+    font-size: 14px;
+    color: #111;
+}
+
+.playTextboxUserId,
+.playTextboxPassword,
+.playTextboxUserName,
+.playTextboxQuestion,
+.playTextboxWork,
+.playTextboxSalary,
+.playTextboxPasswordRe {
+  position: relative;
+  display: block;
+  width: 500px;
+  margin-top: 10px;
+  padding: 15px;
+  border: solid 0.5px #3c6690;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #a0a0a0;
+  outline: none;
+}
+
+/* ログイン画面 -------------------------------------------- */
+#userSelect {
+  width: xcz500px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.userSelectRadio {
+  width: 15px;
+  height: 15px;
+  bottom: 6px;
+  position: relative;
+}
+
+.admin,
+.manager,
+.talent {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#passwordLink {
+  font-size: 16px;
+  color: #333;
+  text-decoration: underline;
+}
+
+#passwordLink:hover {
+  color: #52c3ff;
+}
+
+/* パスワード再設定完了画面 -------------------------------*/
+#completeMessage {
+  display: block;
+  margin-bottom: 100px;
+  text-align: center;
+  font-size: 28px;
+}
+
+/* タレント一覧画面 ----------------------------------------*/
+#userRegist,
+#userList,
+#talentListBtn {
+  width: 120px;
+  margin-top: 5px;
+  padding: 5px 0;
+  font-size: 12px;
+  border: 1px solid #aaa;
+  border-radius: 20px;
+  color: #666;
+  background-color: #e5f2ff;
+}
+
+.talentListName {
+  height: 100%;
+}
+
+.talentName {
+  height: 100%;
+  background: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+#talentTable {
+  width: 30%;
+  margin-bottom: 70px;
+  border-collapse:separate;
+  border-spacing: 0;
+}
+
+#talentTable td{
+  text-align: center;
+  border-left: 1px solid #a8b7c5;
+  border-bottom: 1px solid #a8b7c5;
+  border-top: 1px solid #a8b7c5;;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+  padding: 5px;
+  font-size: 14px;
+  background: #fff;
+}
+
+#talentTable td:last-child{
+  border-right: 1px solid #a8b7c5;
+}
+
+#talentTable tr:last-child td:first-child{
+  border-radius: 0 0 0 5px;
+}
+
+#talentTable tr:last-child td:last-child{
+  border-radius: 0 0 5px 0;
+} */
+
+#talentListBackBtn {
+  width: 120px;
+  margin-top: 5px;
+  padding: 5px 0;
+  font-size: 12px;
+  border: 1px solid #aaa;
+  border-radius: 20px;
+  color: #666;
+  background-color: #e5f2ff;
+}
+
+/* ユーザー登録画面 ---------------------------------------*/
+#questionContent {
+  width: 500px;
+  margin: 0 auto 30px;
+}
+
+/* ユーザー登録確認画面 ------------------------------------*/
+#confirmTable .tableInput {
+  color: #808080;
+}
+
+/* 戻るボタン */
+#backBtn {
+  display: block;
+  text-align: center;
+  width: 150px;
+  margin: 20px auto;
+  padding: 15px 0;
+  font-size: 12px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  color: #666;
+}
+
+#backBtn:hover {
+  border: 1px solid #52c3ff;
+  color: #52c3ff;
+}
+
+/* 一覧画面 -------------------------------------------------*/
+
+#listHead {
+  display: flex;
+  justify-content: space-between;
+}
+
+.listHeadItem {
+  width: 30%;
+  text-align: center;
+}
+
+.listHeadItemMonth {
+  font-size: 32px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.workData {
+  width: 30%;
+}
+
+#managerSelect {
+  text-align: end;
+  display: flex;
+  flex-direction: column;
+}
+
+.listHeadForm {
+  text-align: end;
+}
+
+#messageWrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+#messageMainWrap {
+  width: 58%;
+  height: 350px;
+}
+
+#messageMain {
+  position: relative;
+  width: 90%;
+}
+
+#messageDisplay {
+  position: absolute;
+  padding: 30px;
+  top: 18px;
+  left: 10px;
+  width: 100%;
+  z-index: 1;
+  height:218px;
+  background-color: #fff;
+  border: solid 0.5px #3c6690;
+  overflow: scroll;
+}
+
+#messagePostWrap {
+  width: 30%;
+  height: 350px;
+}
+
+#messagePost {
+  position: relative;
+}
+
+#messageTable {
+  margin: 0;
+  width: 100%;
+}
+
+.messageItem {
+  height: 30px;
+}
+
+.messageName,
+.messageColon,
+.messageContent {
+  padding-right: 10px;
+  font-size: 18px;
+  height: 30px;
+}
+
+#messageRegistTable {
+  position: absolute;
+  top: 30px;
+}
+
+#messageRegistTable td {
+  font-size: 18px;
+}
+
+#messageRegistTable td {
+  padding-right: 10px;
+}
+
+.messageColon {
+  padding: 0 5px 0;
+}
+
+.messageContent {
+  padding-left: 10px;
+  overflow-wrap: break-word;
+}
+
+#messagePostForm {
+  text-align: center;
+}
+
+#messageSend {
+  position: absolute;
+  top: 200px;
+  left: 50px;
+  width: 150px;
+  height: 50px;
+  box-shadow: 3px 3px 3px gray;
+  cursor: pointer;
+  border: none;
+  background-color: #6e7af033;
+}
+
+#messageSend:hover {
+  background: #4756dc33;
+}
+
+.messageInfo{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.messageInfoName {
+  width: 15%;
+}
+
+.messageInfoColon {
+  width: 3%;
+}
+
+.messageInfoBody {
+  width: 60%;
+  padding-right: 2px;
+  overflow-wrap: break-word;
+}
+
+.messageInfoCheck {
+  width: 10%;
+}
+
+.messageInfoDelete {
+  width: 10%;
+}
+
+.redBtn {
+  background: red;
+}
+
+
+.aaa {
+  font-size: 18px;
+  /* font-weight: 700; */
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.bbb {
+  width: 70px;
+  height: 70px;
+  padding: 0;
+  margin-bottom: 7px;
+  border-radius: 50%;
+  /* color: #fff; */
+  background: #6e7af033;
+  -webkit-box-shadow: 0 5px 0 #0018ff4a;
+  box-shadow: 0 5px 0 #0018ff4a;
+}
+
+
+.bbb:hover {
+  -webkit-transform: translate(0, 2px);
+  transform: translate(0, 2px);
+  /* color: #fff; */
+  -webkit-box-shadow: 0 1px 0 #0018ff4a;
+  box-shadow: 0 1px 0 #0018ff4a;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 一覧画面テーブルデザイン */
+#listTable {
+  width: 100%;
+  margin-bottom: 70px;
+  border-collapse:separate;
+  border-spacing: 0;
+}
+
+#listTable th:first-child{
+  border-radius: 5px 0 0 0;
+}
+
+#listTable th:last-child{
+  border-radius: 0 5px 0 0;
+  border-right: 1px solid #3c6690;
+}
+
+#listTable th{
+  color:white;
+  background: linear-gradient(#829ebc,#225588);
+  border-left: 1px solid #3c6690;
+  border-top: 1px solid #3c6690;
+  border-bottom: 1px solid #3c6690;
+  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+  padding: 5px;
+}
+
+#listTable td{
+  border-left: 1px solid #a8b7c5;
+  border-bottom: 1px solid #a8b7c5;
+  border-top:none;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+  padding: 5px;
+  font-size: 14px;
+  background: #fff;
+}
+
+#listTable td:last-child{
+  border-right: 1px solid #a8b7c5;
+}
+
+#listTable tr:last-child td:first-child {
+  border-radius: 0 0 0 5px;
+}
+
+#listTable tr:last-child td:last-child {
+  border-radius: 0 0 5px 0;
+}
+
+
+
+#userManagerTable,
+#userTalentTable {
+  width: 100%;
+  margin-bottom: 70px;
+  border-collapse:separate;
+  border-spacing: 0;
+}
+
+#userManagerTable td,
+#userTalentTable td{
+  text-align: center;
+  border-left: 1px solid #a8b7c5;
+  border-bottom: 1px solid #a8b7c5;
+  border-top: 1px solid #a8b7c5;;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+  padding: 5px;
+  font-size: 14px;
+  background: #fff;
+}
+
+#userManagerTable td:last-child,
+#userTalentTable td:last-child{
+  border-right: 1px solid #a8b7c5;
+}
+
+#userManagerTable tr:last-child td:first-child,
+#userTalentTable tr:last-child td:first-child{
+  border-radius: 0 0 0 5px;
+}
+
+#userManagerTable tr:last-child td:last-child,
+#userTalentTable tr:last-child td:last-child{
+  border-radius: 0 0 5px 0;
+}
+
+
+.userListSubTitle {
+  position: relative;
+  width: 200px;
+  color: white;
+  background: linear-gradient(#829ebc,#225588);
+  border-left: 1px solid #3c6690;
+  border-top: 1px solid #3c6690;
+  border-bottom: 1px solid #3c6690;
+  box-shadow: 0px 1px 1px rgb(255 255 255 / 30%) inset;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.userListItem {
+  text-align: center;
+}
+
+.centerItem {
+  text-align: center;
+}
+
+.rightItem {
+  text-align: right;
+}
+
+.leftItem {
+  text-align: left;
+}
+
+.heading3Box {
+  position: absolute;
+  width: 200px;
+  color: white;
+  background: linear-gradient(#829ebc,#225588);
+  border-left: 1px solid #3c6690;
+  border-top: 1px solid #3c6690;
+  border-bottom: 1px solid #3c6690;
+  box-shadow: 0px 1px 1px rgb(255 255 255 / 30%) inset;
+  padding: 5px;
+  z-index: 2;
+  border-radius: 5px;
+}
+
+.salaryChange,
+.salaryDelete {
+  width: 20px;
+}
+
+h3 {
+  text-align: center;
+}
+
+/* 給与登録画面 -------------------------------------------*/
+#selectItem {
+  display: flex;
+  align-items: center;
+}
+
+#salaryListBack {
+  width: 120px;
+  margin-top: 5px;
+  padding: 5px 0;
+  font-size: 12px;
+  border: 1px solid #aaa;
+  border-radius: 20px;
+  color: #666;
+  background-color: #e5f2ff;
+}
+
+.playLabelSelectTalentId,
+.playLabelSelectManagerId {
+  position: absolute;
+  top: -25px;
+  left: 5px;
+  font-size: 14px;
+  color: #111;
+}
+
+/* ユーザー一覧-------------------------------------------- */
+
+#deleteMain {
+  display: flex;
+  justify-content: space-around;
+}
+
+.userDeleteBtn {
+  width: 70px;
+}
+
+.userDeleteBtnItem {
+  text-align: center;
+}
